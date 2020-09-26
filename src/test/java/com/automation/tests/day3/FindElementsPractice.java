@@ -25,12 +25,18 @@ public class FindElementsPractice {
         WebElement signUp = driver.findElement(By.className("radius"));
         signUp.click();
 
+        WebElement message = driver.findElement(By.tagName("h3"));
+
+        String expected = "Thank you for signing up. Click the button below to return to the home page.";
+        String actual = message.getText();//<h3>Text</h3>
+
+        if(actual.equals(expected)){
+            System.out.println("test passed!");
+        }
 
         Thread.sleep(3000);
 
-
-
-        driver.quit();
+       driver.quit();
 
     }
 }
