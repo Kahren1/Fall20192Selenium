@@ -33,9 +33,40 @@ public class FindElementById {
         }else{
             System.out.println("test failed");
         }
+
+        //click on Logout button
+        //looks like a button, but it is not based on a <button tag - a link - a hyperlink - <a  tag
+        //partialLinkText - contains()
+        WebElement logout = driver.findElement(By.partialLinkText("Logout"));
+        System.out.println("logout:"+logout.getText());
+//getAttribute() method returns any attribute value
+        String href= logout.getAttribute("href");
+        String className=logout.getAttribute("class");
+        System.out.println("href: "+href);
+        System.out.println("className: "+className);
+        logout.click();
+        Thread.sleep(3000);
+
+        //let's enter invalid credentials
+
+        driver.findElement(By.name("username")).sendKeys("user");
+        driver.findElement(By.name("password")).sendKeys("user");
+        Thread.sleep(2000);
+        driver.findElement(By.tagName("button")).click();
+        Thread.sleep(3000);
+        String expectedNegative = "Your username is invalid!";
+
+       WebElement message2 = driver.findElement(By.id("flash"));
+       String actualNegative = message2.getText();
+        System.out.println(actualNegative);
+
+       if(actualNegative.contains(expectedNegative)){
+           System.out.println("Negative test passsed!");
+       }
+
+
+
+
         driver.quit();
-
-
-
     }
 }

@@ -14,6 +14,7 @@ public class DriverFactory {
      */
     public static WebDriver createDriver(String browserName){
         if(browserName.equalsIgnoreCase("chrome")){
+            //Vasya used WebDriverManager.chromedriver().version("79.0").setup() to fix timed out message
             WebDriverManager.chromedriver().setup();
           return new ChromeDriver();
         }else{
