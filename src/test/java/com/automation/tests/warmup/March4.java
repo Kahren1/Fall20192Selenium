@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.Arrays;
+
 public class March4 {
     static WebDriver driver;
 
@@ -35,7 +37,8 @@ public class March4 {
 
 //in HTML, tags are always purple in color
         WebElement searchResults = driver.findElement(By.tagName("h1"));
-        System.out.println(searchResults.getText().split(" ")[0]);
+        String searchResultsChunk = searchResults.getText().split(" ")[0];
+        System.out.println(searchResultsChunk);
         Thread.sleep(3000);
 
         driver.quit();
@@ -64,7 +67,7 @@ public class March4 {
         String title = driver.getTitle();
         if (title.contains(expectedTitle)) {
             System.out.println("Verified - title contains search item");
-        }else{
+        } else {
             System.out.println("Test failed");
         }
         Thread.sleep(2000);
@@ -83,21 +86,25 @@ public class March4 {
 
         driver.get("https://en.wikipedia.org/wiki/Main_Page");
 
+        //enter search item 'selenium webdriver'
         WebElement searchBox = driver.findElement(By.id("searchInput"));
         searchBox.sendKeys("selenium webdriver");
 //        WebElement searchButton = driver.findElement(By.className("pure-button pure-button-primary-progressive"));
-        WebElement searchButton = driver.findElement(By.name("go"));
-       searchButton.click();
 
+        //click on search button
+        WebElement searchButton = driver.findElement(By.name("go"));
+        searchButton.click();
+//click on search result 'Selenium (software)'
         WebElement searchResult = driver.findElement(By.partialLinkText("Selenium (software)"));
         searchResult.click();
 
+        //verify url ends with'Selenium_(software)'
         String expectedURL = "Selenium_(software)";
         String actualURL = driver.getCurrentUrl();
         System.out.println(actualURL);
-        if(actualURL.endsWith(expectedURL)){
+        if (actualURL.endsWith(expectedURL)) {
             System.out.println("test passed");
-        }else{
+        } else {
             System.out.println("test failed");
         }
         Thread.sleep(2000);
@@ -105,4 +112,4 @@ public class March4 {
 
     }
 
-    }
+}
