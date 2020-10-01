@@ -21,17 +21,22 @@ public class RadioButtons {
         //let's find all radio buttons and click on them one-by-one
         List<WebElement> buttons = driver.findElements(By.tagName("input"));
         for(WebElement button:buttons){
+            String idValue = button.getAttribute("id");
+//.isSelected = if button has been clicked already
+            boolean isSelected = button.isSelected();
+            System.out.println(idValue + " is selected? " + isSelected);
+
             //if button is eligible to click
             //returns true if clickable
             if(button.isEnabled()) {
-                String idValue = button.getAttribute("id")
+
                 BrowserUtils.wait(2);
                 button.click();
                 System.out.println("Clicked on: "+ idValue );
             }else{
-                System.out.println("Button is disabled, not clicked");
+                System.out.println("Button is disabled, not clicked: "+idValue);
             }
-
+            System.out.println("");
 
         }
 
