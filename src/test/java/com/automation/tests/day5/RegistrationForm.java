@@ -25,13 +25,13 @@ public class RegistrationForm {
         lastName.sendKeys("Shevchenko");
 
         WebElement userName = driver.findElement((By.name("username")));
-        userName.sendKeys("Vasya");
+        userName.sendKeys("Vasiliy");
 
         WebElement email = driver.findElement(By.name("email"));
         email.sendKeys("vasya@gmail.com");
 
         WebElement password = driver.findElement(By.name("password"));
-        email.sendKeys("superSecretPassword");
+        password.sendKeys("superSecretPassword");
 
         WebElement phoneNumber = driver.findElement(By.name("phone"));
         phoneNumber.sendKeys("301-675-2979");
@@ -44,14 +44,17 @@ public class RegistrationForm {
         birthDay.sendKeys("01/01/2005");
 
         WebElement javaCheckbox = driver.findElement(By.id("inlineCheckbox2"));
-        javaCheckbox.click();
+        javaCheckbox.click(); //select java
 
         BrowserUtils.wait(3);
 
         WebElement signupButton = driver.findElement(By.id("wooden_spoon"));
-        signupButton.click();
+        signupButton.click(); //click on submit
 
         BrowserUtils.wait(5);
+
+        //add verification part
+
 
         driver.quit();
 
